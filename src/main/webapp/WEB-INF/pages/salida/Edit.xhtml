@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSalidaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSalidaLabel_salidaId}" for="salidaId" />
+                    <h:inputText id="salidaId" value="#{salidaController.selected.salidaId}" title="#{bundle.EditSalidaTitle_salidaId}" required="true" requiredMessage="#{bundle.EditSalidaRequiredMessage_salidaId}"/>
+                    <h:outputLabel value="#{bundle.EditSalidaLabel_SFecha}" for="SFecha" />
+                    <h:inputText id="SFecha" value="#{salidaController.selected.SFecha}" title="#{bundle.EditSalidaTitle_SFecha}" required="true" requiredMessage="#{bundle.EditSalidaRequiredMessage_SFecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSalidaLabel_SCantidad}" for="SCantidad" />
+                    <h:inputText id="SCantidad" value="#{salidaController.selected.SCantidad}" title="#{bundle.EditSalidaTitle_SCantidad}" required="true" requiredMessage="#{bundle.EditSalidaRequiredMessage_SCantidad}"/>
+                    <h:outputLabel value="#{bundle.EditSalidaLabel_SUsuarioFk}" for="SUsuarioFk" />
+                    <h:selectOneMenu id="SUsuarioFk" value="#{salidaController.selected.SUsuarioFk}" title="#{bundle.EditSalidaTitle_SUsuarioFk}" required="true" requiredMessage="#{bundle.EditSalidaRequiredMessage_SUsuarioFk}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSalidaLabel_SProductoFk}" for="SProductoFk" />
+                    <h:selectOneMenu id="SProductoFk" value="#{salidaController.selected.SProductoFk}" title="#{bundle.EditSalidaTitle_SProductoFk}" required="true" requiredMessage="#{bundle.EditSalidaRequiredMessage_SProductoFk}">
+                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{salidaController.update}" value="#{bundle.EditSalidaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSalidaViewLink}"/>
+                <br />
+                <h:commandLink action="#{salidaController.prepareList}" value="#{bundle.EditSalidaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSalidaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditClienteLabel_clienteId}" for="clienteId" />
+                    <h:inputText id="clienteId" value="#{clienteController.selected.clienteId}" title="#{bundle.EditClienteTitle_clienteId}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_clienteId}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_CNombre}" for="CNombre" />
+                    <h:inputText id="CNombre" value="#{clienteController.selected.CNombre}" title="#{bundle.EditClienteTitle_CNombre}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_CNombre}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_CApellido}" for="CApellido" />
+                    <h:inputText id="CApellido" value="#{clienteController.selected.CApellido}" title="#{bundle.EditClienteTitle_CApellido}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_CApellido}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_CDireccion}" for="CDireccion" />
+                    <h:inputText id="CDireccion" value="#{clienteController.selected.CDireccion}" title="#{bundle.EditClienteTitle_CDireccion}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_CDireccion}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_CDocumentoTipo}" for="CDocumentoTipo" />
+                    <h:inputText id="CDocumentoTipo" value="#{clienteController.selected.CDocumentoTipo}" title="#{bundle.EditClienteTitle_CDocumentoTipo}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_CDocumentoTipo}"/>
+                    <h:outputLabel value="#{bundle.EditClienteLabel_CNumDocumento}" for="CNumDocumento" />
+                    <h:inputText id="CNumDocumento" value="#{clienteController.selected.CNumDocumento}" title="#{bundle.EditClienteTitle_CNumDocumento}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_CNumDocumento}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{clienteController.update}" value="#{bundle.EditClienteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditClienteViewLink}"/>
+                <br />
+                <h:commandLink action="#{clienteController.prepareList}" value="#{bundle.EditClienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditClienteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
